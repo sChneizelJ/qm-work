@@ -23,11 +23,7 @@ class concatstringsme
     {
         // first create three variables, one for each piece of the final message
         // and another to hold the final combined message
-        String letter1;
-        String letter2;
-        String contact;
-	    String fact2;
-	    String post;
+        String letter1, letter2;
 
         // set the first two variable to particular strings
         letter1 = "SSSSSS" + "\n" + "SS" + "\n" + "SS" + "\n" + "SSSSSS" + "\n" + "    SS" + "\n" + "    SS" + "\n" +"SSSSSS";
