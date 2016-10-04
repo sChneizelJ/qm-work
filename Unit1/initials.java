@@ -35,7 +35,7 @@ class initials
      } // END firsti
     
    // This is the method for the second initial.
-    public static void secondi()
+    public static void secondi() 
     {
     
     	String letter2;
