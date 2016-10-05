@@ -15,7 +15,10 @@ class fitnessAge
         System.exit(0);   
     } // END main
    
+    /*
+    This is split into three methods but main calculations are all done by fcalculator.
     
+    */
     
     public static void fcalculator()
     {
@@ -23,13 +26,13 @@ class fitnessAge
        int age2;       
        int totalAge; 
        int averageAge;
-       int aver;
+       int aver; // Stores averageAge for future use
        int averMulti;
        int divi; 
        int add1;
-       int fitage;
+       int fitage; // Stores the result of add1 for using in string
        int actualAge;
-       int diff;
+       int diff; // The final differance showing the differances of the fit ages and the users actual age.
       
        age1 = inputAge1(); 
        age2 = inputAge2();
@@ -63,7 +66,7 @@ class fitnessAge
 
 
     
-    public static int inputAge1()
+    public static int inputAge1() // int as it requires integer inputs.
     {
        int age;
        
@@ -77,7 +80,7 @@ class fitnessAge
        return age;
     } // END inputAge1
     
-    public static int inputAge2()
+    public static int inputAge2() // int as it requires integer inputs.
     {
        int agea;
        
