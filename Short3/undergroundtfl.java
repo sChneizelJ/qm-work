@@ -64,7 +64,7 @@ class undergroundtfl
   The following blocks of method returns the value
   assigned to a variable in this case returns the zone.
   */
-
+  // Should have used records though for this particular problem.
   // Called when Mile End is typed.
   public static int mile()
   {
@@ -78,7 +78,7 @@ class undergroundtfl
   {
     int zone = 1;
 
-      return zone;
+    return zone;
   }// END liverpoolst
 
   // Called when Woodford is typed
