@@ -1,5 +1,5 @@
 /*
- * Author: Sm Shahnaiz
+ * Author: Sm Shahnaiz Date: 11 Oct 2016
  * This is a program that gives information about paintings in an art gallery for visitors.
  *
 */
