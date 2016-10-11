@@ -18,7 +18,7 @@ class artgallery
 
 }
 
-class artrecord
+class artrecords
 {
     String direction; String artist; String title;
     int year;
