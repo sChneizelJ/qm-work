@@ -33,7 +33,7 @@ class musicquiz
     q5 = "Canadian singer and songwriter Abel Makkonen Tesfaye is better known as?";// The Weeknd
     Scanner scan = new Scanner(System.in);
     //Questions on Screen
-
+    System.out.println(openMesasge);
     System.out.println(q1);
 
     ans = scan.nextLine();
