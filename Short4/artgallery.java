@@ -45,6 +45,11 @@ class artgallery
         }
     
     }// END askvisitor
+    
+    public static string getdirection()
+    {
+        return.direction;
+    }
 
 }// END class artgallery
 
