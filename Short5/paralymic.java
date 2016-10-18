@@ -18,14 +18,21 @@ class paralymic
     public static void legalverifier();
     {
         int maxnum = 32; //Limit of disability points.
-        int ans1;
+        int ans1 = loopaskUsr();
         int ans2;
         int ans3;
         int ans4;
 
     }//END legalverifier
 
-    public static
+    public static int loopaskUsr()
+    {
+        for (int i=1, i <= 4, i++)
+        {
+            print("What is the dissability class of Runner" + i)
+        }
+
+    }
     //Method for asking input from user
     public static int userin()
     {
@@ -35,9 +42,9 @@ class paralymic
 
     }
     //Method for printing out to screen. Keep it simple.
-    public static String print(String ans)
+    public static void print(String ans)
     {
-        return System.out.println(ans);
+         System.out.println(ans);
     }
 }// END class paralymic
 
