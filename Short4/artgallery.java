@@ -98,69 +98,69 @@ class artgallery
 
     public static String getDirection (Artrecords r)
     {
-        return r.direction;
+        return r.direction; // Gets the value set in destination variable in the record.
     }
 
     public static String getArtist (Artrecords r)
     {
-        return r.artist;
+        return r.artist; // Gets the value set in destination variable in the record.
     }
 
     public static String getTitle (Artrecords r)
     {
-        return r.title;
+        return r.title; // Gets the value set in titile variable in the record.
     }
 
     public static int getYear (Artrecords r)
     {
-        return r.year;
+        return r.year; // Gets the value set in year variable in the record.
     }
 
     public static double getHeight (Artrecords r)
     {
-        return r.height;
+        return r.height; // Gets the value set in height variable in the record.
     }
 
     public static double getWidth (Artrecords r)
     {
-        return r.width;
+        return r.width; // Gets the value set in width variable in the record.
     }
 
     /*The following methods are the setter methods*/
 
     public static Artrecords setDirection (Artrecords r, String direc)
     {
-        r.direction = direc;
+        r.direction = direc;  // Sets the value in direction variable in the record.
         return r;
     }
 
     public static Artrecords setArtist (Artrecords r, String name)
     {
-        r.artist = name;
+        r.artist = name;  // Sets the value in artist variable in the record.
         return r;
     }
 
     public static Artrecords setTitle (Artrecords r, String artname)
     {
-        r.title = artname;
+        r.title = artname;  // Sets the value in title variable in the record.
         return r;
     }
 
     public static Artrecords setYear (Artrecords r, int yrs)
     {
-        r.year = yrs;
+        r.year = yrs;  // Sets the value in year variable in the record.
         return r;
     }
 
     public static Artrecords setHeight (Artrecords r, double hei)
     {
         r.height = hei;
-        return r;
+        return r;  // Sets the value in height variable in the record.
     }
 
     public static Artrecords setWidth (Artrecords r, double wid)
     {
-        r.width = wid;
+        r.width = wid;  // Sets the value in width variable in the record.
         return r;
     }
 
