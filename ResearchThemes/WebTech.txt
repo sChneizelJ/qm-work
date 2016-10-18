@@ -1,0 +1,18 @@
+﻿Sm Shahniaz										160750520						
+
+Web Technology 
+
+Web technology is the development of the mechanism that allows two of more computer devices to communicate over a network. For instance, in a typical office setting, computers plus additional devices such as printers may be interconnected via a network, allowing convenient transmission of information. The processes involved in web technology are complex and diverse. Web technology has revolutionized communication methods and has made operations more efficient.
+
+Internet, it was first developed for academic and military purposes by the US federal government in 1960’s, this allowed computers to communicate with one another over a network. And the idea of World Wide Web as a large interconnected network of computers using internet came into being in 1990’s by Tim Berners-Lee at CERN. The web used a markup language for content viewing called HTML only static pages could be viewed at that time. To view them an application called browser was developed the first one was called Netscape Navigator now more popular ones include Chrome, Firefox etc. As time passed Web became more popular hence demanding more robust and dynamic content resulting in the development of JavaScript. As web expanded servers are employed and could be used in order to communicate with the files stored in the server as a result , PHP, nodejs etc or server-side languages were developed, online applications are created using them. Now giving rise to hundreds of websites we may daily use such as Google, Facebook etc.
+
+Future development of web technologies include the Internet of Things(Iot) where virtually all everyday objects maybe connected to network allowing communication via Web it is already in effect but many future developments maybe expected in the future an example RFID badges, Google Cars, Smart watches etc. The web is evolving as dynamic and competitive characteristics of the web leads to further innovation to satisfy web’s audience.
+
+Rerferance:
+
+Nodejs Official, https://nodejs.org/en/about/
+Berners-Lee, Tim (August 1996). "The World Wide Web: Past, Present and Future".
+Haverbeke, Marijn (2011). Eloquent JavaScript.  ISBN 978-1-59327-282-1.
+Pfister, Cuno. Getting Started with the Internet of Things. Sebastapool, Calif: O'Reilly Media, Inc., 2011.
+
+
