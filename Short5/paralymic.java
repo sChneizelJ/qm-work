@@ -15,7 +15,7 @@ class paralymic
         legalverifier();
         System.exit(0);
 
-    }
+    }//END main
     public static void legalverifier()
     {
         int maxnum = 32; //Limit of disability points.
@@ -60,7 +60,7 @@ class paralymic
             vals [i] = userin();
         }
         return vals;
-    }
+    }//END loopaskUsr
     //Method for asking input from user
     public static int userin()
     {
@@ -68,10 +68,10 @@ class paralymic
         int usrin = Integer.parseInt(scan.nextLine());
         return usrin;
 
-    }
+    }// END userin
     //Method for printing out to screen. Keep it simple.
     public static void print(String ans)
     {
          System.out.println(ans);
-    }
+    }//END print
 }// END class paralymic
