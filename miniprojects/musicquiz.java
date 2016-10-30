@@ -31,6 +31,7 @@ class musicquiz
 
   public static void askQuestions()
   {
+    //IMPORTANT!! Do not move this block of code until further notice.
     QandA q1 = createQA("Which of the following rock songs won the Best Rock Performance at the 2016 Grammy Awards?","Don't Wanna Fight","Something From Nothing","Moaning Lisa Smile");
     QandA q2 = createQA("Justin Bieber had three of the top five songs on the Billboard Hot 100 chart for January 2nd, 2016. Sorry, Love Yourself and...?","What Do You Mean?","I'll Show You","Purpose");
     QandA q3 = createQA("What did Mike Posner take in Ibiza to show Avicii he was cool?","Pill","Whiskey","Beer");
@@ -74,19 +75,20 @@ class musicquiz
 
 
     }
-
+    // Block of code for calculation '+=' means add the term from before to te current one(always use in loop).
     int sum = 0;
     for(int i =0; i<5; i++)
     {
       sum += pscore[i];
     }
-
+    //Stores total score of each member of team.
     int [] teamtotal = new int[j+1];
     int ttot = 0;
     for(int i=1; i<j; i++)
     {
       teamtotal[i] = sum;
     }
+    //The final team total for the run.
     for(int i=1; i<j;i++)
     {
       ttot += teamtotal[i];
@@ -97,7 +99,7 @@ class musicquiz
   }// END askQuestions
 
   /*This is the method for calling the user inputs thorugh the terminal
-  returns the */
+  returns the values required for further calculations*/
   public static boolean anscheck(String ansu, String ans)
   {
     if (ansu.equals(ans))
