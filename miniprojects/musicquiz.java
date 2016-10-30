@@ -1,6 +1,7 @@
 /*
  *Author: Sm Shahniaz
   This is a program for a music quiz.
+  Source of questions : http://www.triviachamp.com/2016-Pop-Music-Quiz.php
  * */
 
 
@@ -13,7 +14,13 @@ class musicquiz
 
   public static void main(String[] args)
   {
+
     askQuestions();
+    //Don't Wanna Fight
+    //What Do You Mean?
+    //Pill
+    //Adele
+    // The Weeknd
     System.exit(0);
 
   }//END main
@@ -24,57 +31,175 @@ class musicquiz
 
   public static void askQuestions()
   {
-    String openMesasge; String q1; String q2; String q3; String q4; String q5; String ans;
+    QandA q1 = createQA("Which of the following rock songs won the Best Rock Performance at the 2016 Grammy Awards?","Don't Wanna Fight","Something From Nothing","Moaning Lisa Smile");
+    QandA q2 = createQA("Justin Bieber had three of the top five songs on the Billboard Hot 100 chart for January 2nd, 2016. Sorry, Love Yourself and...?","What Do You Mean?","I'll Show You","Purpose");
+    QandA q3 = createQA("What did Mike Posner take in Ibiza to show Avicii he was cool?","Pill","Whiskey","Beer");
+    QandA q4 = createQA("Which artist had hits with the songs 'When We Were Young' and 'Hello' in 2016?","Ariana Grande","Lady Gaga","Adele");
+    QandA q5 = createQA("anadian singer and songwriter Abel Makkonen Tesfaye is better known as?","Future","Drake","The Weeknd");
+    String openMesasge; String ans;String ansu;
     openMesasge = "Welcome to the Random Music Quiz!" + "\n" + "Let's Begin!" + "\n";
-    q1 = "Which of the following rock songs won the Best Rock Performance at the 2016 Grammy Awards?"; //Don't Wanna Fight
-    q2 = "Justin Bieber had three of the top five songs on the Billboard Hot 100 chart for January 2nd, 2016. Sorry, Love Yourself and...?";//What Do You Mean?
-    q3 = "What did Mike Posner take in Ibiza to show Avicii he was cool?"; //Pill
-    q4 = "Which artist had hits with the songs 'When We Were Young' and 'Hello' in 2016?";//Adele
-    q5 = "Canadian singer and songwriter Abel Makkonen Tesfaye is better known as?";// The Weeknd
-    Scanner scan = new Scanner(System.in);
+    boolean usrAns = false;
+
     //Questions on Screen
-    System.out.println(openMesasge);
-    System.out.println(q1);
+    print(openMesasge);
 
-    ans = scan.nextLine();
-    finalMessage();
 
-    System.out.println(q2);
+    print("How many are going to take the quiz?");
+    int j = Integer.parseInt(userin());
+    int [] pscore = new int[5];
+    for (int i = 1; i<=j; i++)
+    {
 
-    ans = scan.nextLine();
-    finalMessage();
+      print("Start Player: " + i);
+      print(getQues(q1) +"\n"+ "a)" + getAns1(q1) +"\n"+"b)" + getAns2(q1) +"\n"+ "c)" + getAns3(q1) +"\n");
+      ansu = userin();
+      usrAns = anscheck(ansu, "a");
+      pscore[0] = disroll(usrAns);
+      print(getQues(q2) +"\n"+ "a)" + getAns1(q2) +"\n"+"b)" + getAns2(q2) +"\n"+ "c)" + getAns3(q2) +"\n");
+      ansu = userin();
+      usrAns = anscheck(ansu, "a");
+      pscore[1] = disroll(usrAns);
+      print(getQues(q3) +"\n"+ "a)" + getAns1(q3) +"\n"+"b)" + getAns2(q3) +"\n"+ "c)" + getAns3(q3) +"\n");
+      ansu = userin();
+      usrAns = anscheck(ansu, "a");
+      pscore[2] = disroll(usrAns);
+      print(getQues(q4) +"\n"+ "a)" + getAns1(q4) +"\n"+"b)" + getAns2(q4) +"\n"+ "c)" + getAns3(q4) +"\n");
+      ansu = userin();
+      usrAns = anscheck(ansu, "c");
+      pscore[3] = disroll(usrAns);
+      print(getQues(q5) +"\n"+ "a)" + getAns1(q5) +"\n"+"b)" + getAns2(q5) +"\n"+ "c)" + getAns3(q5) +"\n");
+      ansu = userin();
+      usrAns = anscheck(ansu, "c");
+      pscore[4] = disroll(usrAns);
 
-    System.out.println(q3);
 
-    ans = scan.nextLine();
-    finalMessage();
+    }
 
-    System.out.println(q4);
+    int sum = 0;
+    for(int i =0; i<5; i++)
+    {
+      sum += pscore[i];
+    }
 
-    ans = scan.nextLine();
-    finalMessage();
-
-    System.out.println(q5);
-
-    ans = scan.nextLine();
-    finalMessage();
+    int [] teamtotal = new int[j+1];
+    int ttot = 0;
+    for(int i=1; i<j; i++)
+    {
+      teamtotal[i] = sum;
+    }
+    for(int i=1; i<j;i++)
+    {
+      ttot += teamtotal[i];
+    }
+    finalMessage(ttot);
 
     return;
   }// END askQuestions
 
   /*This is the method for calling the user inputs thorugh the terminal
   returns the */
-
-
-  public static String finalMessage()
+  public static boolean anscheck(String ansu, String ans)
   {
-    final String message = "That's an intriguing answer!";
+    if (ansu.equals(ans))
+    {
+      print("This that is correct!! ^-^");
+      return true;
+    }
+    else
+    {
+      print("Better Luck next time");
+      return false;
+    }
+  }
 
-    System.out.println(message);
+  public static int disroll(boolean uans)
+  { int roll = score();
+    int fin = 0;
+    if (uans = true)
+    {
+      if (roll == 6)
+      {
+        fin = 6;
+      }
+      else
+      {
+        fin = 3;
+      }
+    }
+    else
+    {
+      print("System Broken :P");
+    }
 
-    System.out.println("Your score is " + score());
+    return fin;
+  }
 
-    return message;
+  public static void finalMessage(int score)
+  {
+    print("Thank you all very much for taking part.");
+    print("Your team scored :" + score);
+
+  }
+  // Create and Getter and Setters
+  public static QandA createQA(String ques, String an1,String an2, String an3)
+  {
+    QandA q = new QandA();
+    q = setQues(q,ques);
+    q = setAns(q,an1,an2,an3);
+
+    return q;
+  }
+
+  public static QandA setQues(QandA q, String ques)
+  {
+    q.question = ques;
+
+    return q;
+  }
+
+  public static QandA setAns(QandA q,String an1, String an2, String an3)
+  {
+    q.ans1 = an1;
+    q.ans2 = an2;
+    q.ans3 = an3;
+
+    return q;
+  }
+
+  public static String getQues(QandA q)
+  {
+    return q.question;
+  }
+
+  public static String getAns1(QandA q)
+  {
+    return q.ans1;
+  }
+  public static String getAns2(QandA q)
+  {
+    return q.ans2;
+  }
+  public static String getAns3(QandA q)
+  {
+    return q.ans3;
+  }
+
+  public static String userin()
+  {
+
+    Scanner scanner = new Scanner(System.in);
+    String usrin = scanner.nextLine();
+    return usrin;
+
+  }
+
+
+  //Method for output
+  public static void print (String tboutput)
+  {
+
+    System.out.println(tboutput);
+
   }
 
   /*This is a method for the random dice roll returning
@@ -89,4 +214,10 @@ class musicquiz
     return diceThrow;
 
   }
+}
+
+class QandA
+{
+  String question;
+  String ans1, ans2, ans3;
 }
