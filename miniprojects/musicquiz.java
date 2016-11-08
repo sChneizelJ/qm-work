@@ -8,14 +8,26 @@
 import java.util.*;// Using Random and Scanner
 import javax.swing.*;// Here for virtually no reason
 
+class QandA
+{
+  String question;
+  String ans1, ans2, ans3;
+}
+
 
 class musicquiz
 {
 
   public static void main(String[] args)
   {
-
-    askQuestions();
+    /*Creating a record using an array as everytime the loop is carried a new record is created named rec[1]..rec[2] and so on.
+    This allows creation of bulk records*/
+    QandA [] rec = new QandA[5];
+    for(int i=0;i<5;i++)
+    {
+      rec [i] = createQA(i);
+    }
+    askQuestions(rec);//passing record
     //Don't Wanna Fight
     //What Do You Mean?
     //Pill
@@ -25,18 +37,12 @@ class musicquiz
 
   }//END main
 
-  /*This method askQuestions contains all the questions for the quiz.
-  and contains all the answers on the side comments*/
+  /*This method asks the question to the players using the record and loops*/
 
 
-  public static void askQuestions()
+  public static void askQuestions(QandA rec[])
   {
-    //IMPORTANT!! Do not move this block of code until further notice.
-    QandA q1 = createQA("Which of the following rock songs won the Best Rock Performance at the 2016 Grammy Awards?","Don't Wanna Fight","Something From Nothing","Moaning Lisa Smile");
-    QandA q2 = createQA("Justin Bieber had three of the top five songs on the Billboard Hot 100 chart for January 2nd, 2016. Sorry, Love Yourself and...?","What Do You Mean?","I'll Show You","Purpose");
-    QandA q3 = createQA("What did Mike Posner take in Ibiza to show Avicii he was cool?","Pill","Whiskey","Beer");
-    QandA q4 = createQA("Which artist had hits with the songs 'When We Were Young' and 'Hello' in 2016?","Ariana Grande","Lady Gaga","Adele");
-    QandA q5 = createQA("anadian singer and songwriter Abel Makkonen Tesfaye is better known as?","Future","Drake","The Weeknd");
+
     String openMesasge; String ans;String ansu;
     openMesasge = "Welcome to the Random Music Quiz!" + "\n" + "Let's Begin!" + "\n";
     boolean usrAns = false;
@@ -44,64 +50,39 @@ class musicquiz
     //Questions on Screen
     print(openMesasge);
 
-
+    String [] answ = {"a","a","a","c","c"}; //For storing the short answere.
     print("How many are going to take the quiz?");
-    int j = Integer.parseInt(userin());
-    int [] pscore = new int[5];
-    for (int i = 1; i<=j; i++)
+    int j = Integer.parseInt(userin()); //Asking for the number of players in a team.
+    int [] pscore = new int[j];// To keep count of each indivisual scores of players.
+    for (int i = 0; i<j; i++)
     {
-
-      print("Start Player: " + i);
-      print(getQues(q1) +"\n"+ "a)" + getAns1(q1) +"\n"+"b)" + getAns2(q1) +"\n"+ "c)" + getAns3(q1) +"\n");
-      ansu = userin();
-      usrAns = anscheck(ansu, "a");
-      pscore[0] = disroll(usrAns);
-      print(getQues(q2) +"\n"+ "a)" + getAns1(q2) +"\n"+"b)" + getAns2(q2) +"\n"+ "c)" + getAns3(q2) +"\n");
-      ansu = userin();
-      usrAns = anscheck(ansu, "a");
-      pscore[1] = disroll(usrAns);
-      print(getQues(q3) +"\n"+ "a)" + getAns1(q3) +"\n"+"b)" + getAns2(q3) +"\n"+ "c)" + getAns3(q3) +"\n");
-      ansu = userin();
-      usrAns = anscheck(ansu, "a");
-      pscore[2] = disroll(usrAns);
-      print(getQues(q4) +"\n"+ "a)" + getAns1(q4) +"\n"+"b)" + getAns2(q4) +"\n"+ "c)" + getAns3(q4) +"\n");
-      ansu = userin();
-      usrAns = anscheck(ansu, "c");
-      pscore[3] = disroll(usrAns);
-      print(getQues(q5) +"\n"+ "a)" + getAns1(q5) +"\n"+"b)" + getAns2(q5) +"\n"+ "c)" + getAns3(q5) +"\n");
-      ansu = userin();
-      usrAns = anscheck(ansu, "c");
-      pscore[4] = disroll(usrAns);
-
+      int score = 0;
+      print("Start Player: " + (i+1));
+      for(int k=0; k<5;k++)
+      {
+        /*The loop using the array construct of the record to return values based on passing integers.
+        This is a more efficient way for this construct as there is less code involved and also less
+        repetative work*/
+        print(getQues(rec[k]) +"\n"+ "a)" + getAns1(rec[k]) +"\n"+"b)" + getAns2(rec[k]) +"\n"+ "c)" + getAns3(rec[k]) +"\n");
+        ansu = userin();
+        usrAns = anscheck(ansu, answ[k]);
+        int inter = disroll(usrAns); //Intermediatary Storage of int for further manipulation.
+        score = adderOr(inter, score);
+      }
+      pscore[i] = score; //Stores the indivisual results of the players after every loop.
 
     }
-    // Block of code for calculation '+=' means add the term from before to te current one(always use in loop).
-    int sum = 0;
-    for(int i =0; i<5; i++)
-    {
-      sum += pscore[i];
-    }
-    //Stores total score of each member of team.
-    int [] teamtotal = new int[j+1];
-    int ttot = 0;
-    for(int i=1; i<j; i++)
-    {
-      teamtotal[i] = sum;
-    }
-    //The final team total for the run.
-    for(int i=1; i<j;i++)
-    {
-      ttot += teamtotal[i];
-    }
-    finalMessage(ttot);
+
+
+    finalMessage(pscore);
 
     return;
   }// END askQuestions
 
-  /*This is the method for calling the user inputs thorugh the terminal
-  returns the values required for further calculations*/
+  //This method checks and returns a value given that the user inputh a correct value.
   public static boolean anscheck(String ansu, String ans)
   {
+
     if (ansu.equals(ans))
     {
       print("This that is correct!! ^-^");
@@ -113,7 +94,7 @@ class musicquiz
       return false;
     }
   }
-
+//If the answer is true this method a value 3,6 given the inputs being 1-5 || 6.
   public static int disroll(boolean uans)
   { int roll = score();
     int fin = 0;
@@ -135,23 +116,59 @@ class musicquiz
 
     return fin;
   }
-
-  public static void finalMessage(int score)
+  /*This method is an adder if the value given is 3 or else just returns 6*/
+  public static int adderOr(int a,int score)
   {
+    if(a == 3)
+    {
+      score = score + 3;
+      return score;
+    }
+    else
+    {
+      score = 6;
+      return score;
+    }
+  }
+  /*The method does the calculation for the indivisual player scores and total team results*/
+  public static void finalMessage(int [] pscore)
+  {
+
+    for(int i = 0; i<pscore.length; i++)
+    {
+      print("Player " + (i+1) + " scored : " + pscore[i]);
+    }
+
+    // Block of code for calculation '+=' means add the term from before to te current one(always use in loop).
+    int sum = 0;
+    for(int i =0; i<pscore.length; i++)
+    {
+      sum += pscore[i];
+    }
+
+
     print("Thank you all very much for taking part.");
-    print("Your team scored :" + score);
+    print("Your team scored :" + sum);
 
   }
   // Create and Getter and Setters
-  public static QandA createQA(String ques, String an1,String an2, String an3)
+  public static QandA createQA(int i)
   {
+    String [] ques = {"Which of the following rock songs won the Best Rock Performance at the 2016 Grammy Awards?",
+    "Justin Bieber had three of the top five songs on the Billboard Hot 100 chart for January 2nd, 2016. Sorry, Love Yourself and...?",
+  "What did Mike Posner take in Ibiza to show Avicii he was cool?",
+"Which artist had hits with the songs 'When We Were Young' and 'Hello' in 2016?",
+"Canadian singer and songwriter Abel Makkonen Tesfaye is better known as?"};
+    String [] ans1 = {"Don't Wanna Fight","What Do You Mean?","Pill","Ariana Grande","Future"};
+    String [] ans2 = {"Something From Nothing","I'll Show You","Whiskey","Lady Gaga","Drake"};
+    String [] ans3 = {"Moaning Lisa Smile","Purpose","Beer","Adele","The Weeknd"};
     QandA q = new QandA();
-    q = setQues(q,ques);
-    q = setAns(q,an1,an2,an3);
+    q = setQues(q,ques[i]);
+    q = setAns(q,ans1[i],ans2[i],ans3[i]);
 
     return q;
   }
-
+  //Getter and Setter method follows.
   public static QandA setQues(QandA q, String ques)
   {
     q.question = ques;
@@ -159,7 +176,7 @@ class musicquiz
     return q;
   }
 
-  public static QandA setAns(QandA q,String an1, String an2, String an3)
+  public static QandA setAns(QandA q, String an1, String an2, String an3)
   {
     q.ans1 = an1;
     q.ans2 = an2;
@@ -216,10 +233,4 @@ class musicquiz
     return diceThrow;
 
   }
-}
-
-class QandA
-{
-  String question;
-  String ans1, ans2, ans3;
 }
