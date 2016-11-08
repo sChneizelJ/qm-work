@@ -23,12 +23,19 @@ class endangeredAnimals
             print("How many are left in the wild?");
             numbers[i]= inp();
         }
-        //Finding the minimum using a fixed value of 0 and scanning the loop for lowest
-        int min = 0;
+
+		final(animals, numbers);
+
+		
+    }//END endangered
+	public static void final(String animals[], int numbers[])
+	{
+		//Finding the minimum using a fixed value of 0 and scanning the loop for lowest
+	 	int min = 0;
         for(int k=0; k<5;k++)
         {
-            if(numbers[k]<numbers[min])
-            min = k;
+            	if(numbers[k]<numbers[min])
+            	min = k;
         }
 
         print("The most endangered animal is the " + animals[min] +"."+ "\n" +
@@ -37,10 +44,8 @@ class endangeredAnimals
         {
             print(numbers[j]+","+animals[j]);
         }
-
-
-    }//END endangered
-
+		
+	}
     //For integer input.
     public static int inp()
     {
