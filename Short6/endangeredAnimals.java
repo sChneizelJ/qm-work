@@ -24,11 +24,12 @@ class endangeredAnimals
             numbers[i]= inp();
         }
 
-		final(animals, numbers);
+		fin(animals, numbers);
 
 		
     }//END endangered
-	public static void final(String animals[], int numbers[])
+    //final and passing the arrays. 
+	public static void fin(String animals[],int numbers[])
 	{
 		//Finding the minimum using a fixed value of 0 and scanning the loop for lowest
 	 	int min = 0;

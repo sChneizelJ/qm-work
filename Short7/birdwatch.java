@@ -14,29 +14,78 @@ class birdwatch
 
     public static void birds()
     {
-        String [] bnames = new String[5];
-        int [] numbers = new int[5];
-        int i = 0;
+        String birdNames = "";
+        int numbers;
+        int maxNum = 0;
+        String mostSeenbird = "";
+        final String quit = "end";
+        
 
-        while(!inp.equals("END"))
+        while(!(birdNames.equals(quit)))
         {
             print("Which bird have you seen?");
-            bnames[i]= inp();
+            birdNames = inp(); 
+            if (birdNames.equals(quit))
+            { break; }
+            else
+            {
             print("How many were in your garden at once?");
-            numbers[i] = Integer.parseInt(inp());
-            i + 1;
+            numbers = Integer.parseInt(inp());
+            maxNum = maxNum(numbers);
+            mostSeenbird = nameCheck(birdNames, numbers);
+           }
+
         }
-
-        int max = 0;
-        for(int k= 0;k<5;k++)
-        {
-            if(numbers[k]>numbers[min])
-            max = k;
-        }
-
-
-
+        
+        print("You saw " + maxNum + " " + mostSeenbird + "." + "\n" + "It was the most common bird seen at one time in your garden."); 
+        
     }
+	
+	public static int maxNum(int numbers)
+	{
+		int max = 0;
+		if(numbers > max)
+		{	
+			max = numbers;
+			
+		}
+		else
+		{   
+			max = max;
+			
+		}
+	
+		return max;
+	}
+	
+	
+	public static String nameCheck(String birdName, int number)
+	{
+		int max = 0;
+		String nameMax = "";
+		if(number > max)
+		{
+			nameMax = birdName;
+		}
+		else
+		{
+			nameMax = nameMax;
+		
+		}
+		
+		return nameMax;
+	}
 
+	public static String inp()
+    {
+        Scanner scan = new Scanner(System.in);
+        String a = scan.nextLine();
+        return a;
+    }
+    
+    public static void print(String p)
+    {
+        System.out.println(p);
+    }
 }
 
