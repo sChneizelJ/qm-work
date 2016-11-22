@@ -53,12 +53,19 @@ class musicquiz
     String [] answ = {"a","a","a","c","c"}; //For storing the short answere.
     print("How many are going to take the quiz?");
     int j = Integer.parseInt(userin()); //Asking for the number of players in a team.
-    int [] pscore = new int[j];// To keep count of each indivisual scores of players.
-    for (int i = 0; i<j; i++)
+    int [] pscore1 = new int[j];// To keep count of each indivisual scores of players for round 1.
+    int [] pscore2 = new int[j];
+    int round = 1;
+    
+    
+    while(round == 1)
     {
-      int score = 0;
+    
+   	 for (int i = 0; i<j; i++)
+    	{
+      int score1 = 0;
       print("Start Player: " + (i+1));
-      for(int k=0; k<5;k++)
+      for(int k=0; k<2;k++)
       {
         /*The loop using the array construct of the record to return values based on passing integers.
         This is a more efficient way for this construct as there is less code involved and also less
@@ -67,14 +74,39 @@ class musicquiz
         ansu = userin();
         usrAns = anscheck(ansu, answ[k]);
         int inter = disroll(usrAns); //Intermediatary Storage of int for further manipulation.
-        score = adderOr(inter, score);
+        score1 = adderOr(inter, score1);
       }
-      pscore[i] = score; //Stores the indivisual results of the players after every loop.
+      pscore1[i] = score1; //Stores the indivisual results of the players after every loop.
 
     }
+		round++;
+		
+	}
+	
+		while (round == 2){
+		
+			for (int m = 0; m<j; m++)
+		  {
+		    int score2 = 0;
+		    print("Start Player: " + (m+1));
+		    for(int l=2;l<5;l++)
+		    {
+		      /*The loop using the array construct of the record to return values based on passing integers.
+		      This is a more efficient way for this construct as there is less code involved and also less
+		      repetative work*/
+		      print(getQues(rec[l]) +"\n"+ "a)" + getAns1(rec[l]) +"\n"+"b)" + getAns2(rec[l]) +"\n"+ "c)" + getAns3(rec[l]) +"\n");
+		      ansu = userin();
+		      usrAns = anscheck(ansu, answ[l]);
+		      int inter = disroll(usrAns); //Intermediatary Storage of int for further manipulation.
+		      score2 = adderOr(inter, score2);
+		    }
+		    pscore2[m] = score2; //Stores the indivisual results of the players after every loop.
 
-
-    finalMessage(pscore);
+		  }
+		break;
+		
+	}
+    finalMessage(pscore1,pscore2);
 
     return;
   }// END askQuestions
@@ -131,19 +163,24 @@ class musicquiz
     }
   }
   /*The method does the calculation for the indivisual player scores and total team results*/
-  public static void finalMessage(int [] pscore)
+  public static void finalMessage(int [] pscore1, int [] pscore2)
   {
 
-    for(int i = 0; i<pscore.length; i++)
+    for(int i = 0; i<pscore1.length; i++)
     {
-      print("Player " + (i+1) + " scored : " + pscore[i]);
+      print("Player " + (i+1) + " scored : " + pscore1[i] + " for round 1");
     }
-
+    
+		for(int i = 0; i<pscore2.length; i++)
+    {
+      print("Player " + (i+1) + " scored : " + pscore2[i] + " for round 2");
+    }
     // Block of code for calculation '+=' means add the term from before to te current one(always use in loop).
     int sum = 0;
-    for(int i =0; i<pscore.length; i++)
+    for(int i =0; i<pscore1.length; i++)
     {
-      sum += pscore[i];
+      sum += pscore1[i];
+      sum += pscore2[i];
     }
 
 
