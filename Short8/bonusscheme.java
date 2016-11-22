@@ -1,4 +1,4 @@
-/******************************************************************
+ /******************************************************************
 Author Sm Shahniaz
 This is a program that shows the bonus scheme of a company
 based on certain scores giving them an overall performance score.
@@ -39,8 +39,8 @@ class bonusscheme
   public static int performance(Scores s)
   {
     //Getting the values in record
-    int p = getProfits(s);
-    int h = getHards(s);
+    final int p = getProfits(s);
+    final int h = getHards(s);
     // intermediate values
     int interP = profitMulti(p);
     int interH = HardMulti(h);
