@@ -8,10 +8,12 @@
 import java.util.*;// Using Random and Scanner
 import javax.swing.*;// Here for virtually no reason
 
+
 class QandA
 {
   String question;
   String ans1, ans2, ans3;
+  int ansCorrect;
 }
 
 
@@ -56,11 +58,11 @@ class musicquiz
     int [] pscore1 = new int[j];// To keep count of each indivisual scores of players for round 1.
     int [] pscore2 = new int[j];
     int round = 1;
-    
-    
+
+
     while(round == 1)
     {
-    
+
    	 for (int i = 0; i<j; i++)
     	{
       int score1 = 0;
@@ -75,16 +77,19 @@ class musicquiz
         usrAns = anscheck(ansu, answ[k]);
         int inter = disroll(usrAns); //Intermediatary Storage of int for further manipulation.
         score1 = adderOr(inter, score1);
+        int intermCorrect = getansCorrect(rec[k]);
+        int n = ifCorrect(usrAns);
+        rec[k] = setansCorrect(rec[k], intermCorrect, n);
       }
       pscore1[i] = score1; //Stores the indivisual results of the players after every loop.
 
     }
 		round++;
-		
+
 	}
-	
+
 		while (round == 2){
-		
+
 			for (int m = 0; m<j; m++)
 		  {
 		    int score2 = 0;
@@ -99,14 +104,19 @@ class musicquiz
 		      usrAns = anscheck(ansu, answ[l]);
 		      int inter = disroll(usrAns); //Intermediatary Storage of int for further manipulation.
 		      score2 = adderOr(inter, score2);
+          int intermCorrect = getansCorrect(rec[m]);
+          int n = ifCorrect(usrAns);
+          rec[m] = setansCorrect(rec[m], intermCorrect, n);
 		    }
 		    pscore2[m] = score2; //Stores the indivisual results of the players after every loop.
 
 		  }
 		break;
-		
+
 	}
+
     finalMessage(pscore1,pscore2);
+    answerSort(rec,answ);
 
     return;
   }// END askQuestions
@@ -135,18 +145,21 @@ class musicquiz
       if (roll == 6)
       {
         fin = 6;
+        return fin;
       }
       else
       {
         fin = 3;
+        return fin;
       }
     }
     else
     {
       print("System Broken :P");
+      return fin;
     }
 
-    return fin;
+
   }
   /*This method is an adder if the value given is 3 or else just returns 6*/
   public static int adderOr(int a,int score)
@@ -154,6 +167,11 @@ class musicquiz
     if(a == 3)
     {
       score = score + 3;
+      return score;
+    }
+    else if(a == 0)
+    {
+      score = 0;
       return score;
     }
     else
@@ -170,7 +188,7 @@ class musicquiz
     {
       print("Player " + (i+1) + " scored : " + pscore1[i] + " for round 1");
     }
-    
+
 		for(int i = 0; i<pscore2.length; i++)
     {
       print("Player " + (i+1) + " scored : " + pscore2[i] + " for round 2");
@@ -187,6 +205,80 @@ class musicquiz
     print("Thank you all very much for taking part.");
     print("Your team scored :" + sum);
 
+  }
+
+  public static void answerSort(QandA rec[], String answ [])
+  {
+    int [] checkCount= new int[5];
+
+    for(int i=0;i < checkCount.length; i++)
+    {
+      checkCount[i] = getansCorrect(rec[i]);
+    }
+
+    int [] index = new int [5];
+    for(int j=0;j < index.length; j++)
+    {
+      index[j] = j;
+    }
+
+    index = SortWithIndex(checkCount, index);
+    for (int k = 0;k<index.length;k++)
+    {
+      print(getQues(rec[index[k]]) +"\t \t \t \t "+"|"+"\t \t \t \t"+ answ[index[k]]);
+
+    }
+
+  }// END answerSort
+
+  public static int [] SortWithIndex(int data [], int index [])
+  {
+  	int len = data.length;
+  	int [] temp1 = new int[len];
+  	int [] temp2 = new int[len];
+
+
+      for (int i = 0; i <len; i++)
+      {
+
+        for (int j = i + 1; j < len; j++)
+        {
+
+            if(data[i]<data[j])
+            {
+              temp1[i] = data[i];
+              data[i] = data[j];
+              data[j] = temp1[i];
+              /*
+              This invert bubble sort uses the swap of the original data and index simultaneously
+              as the construct i made required the value of the index to be swapped simultaneously,
+              for further operations, i.e. printing the questions and its answers in the order of easiest to hardest.
+              */
+              temp2[i] = index[i];
+              index[i] = index[j];
+              index[j] = temp2[i];
+
+            }
+        }
+
+      }
+
+      return index;
+
+  }
+
+  public static int ifCorrect(boolean b)
+  {
+    int a = 0;
+    if (b = true)
+    {
+      a = 1;
+      return a;
+    }
+    else
+    {
+      return a;
+    }
   }
   // Create and Getter and Setters
   public static QandA createQA(int i)
@@ -221,6 +313,11 @@ class musicquiz
 
     return q;
   }
+  public static QandA setansCorrect(QandA q, int i, int j)
+  {
+    q.ansCorrect = i + j;
+    return q;
+  }
 
   public static String getQues(QandA q)
   {
@@ -238,6 +335,10 @@ class musicquiz
   public static String getAns3(QandA q)
   {
     return q.ans3;
+  }
+  public static int getansCorrect(QandA q)
+  {
+    return q.ansCorrect;
   }
 
   public static String userin()
@@ -270,4 +371,5 @@ class musicquiz
     return diceThrow;
 
   }
+
 }
