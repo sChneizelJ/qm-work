@@ -8,12 +8,12 @@
 import java.util.*;// Using Random and Scanner
 import javax.swing.*;// Here for virtually no reason
 
-
+//Record
 class QandA
 {
   String question;
-  String ans1, ans2, ans3;
-  int ansCorrect;
+  String ans1, ans2, ans3;// multiple answers for output
+  int ansCorrect; //Keeping a count of how many people got a question correct.
 }
 
 
@@ -58,7 +58,9 @@ class musicquiz
     int [] pscore1 = new int[j];// To keep count of each indivisual scores of players for round 1.
     int [] pscore2 = new int[j];
     int round = 1;
-
+/*****************************
+*Control using while loop.
+**/
 
     while(round == 1)
     {
@@ -115,8 +117,8 @@ class musicquiz
 
 	}
 
-    finalMessage(pscore1,pscore2);
-    answerSort(rec,answ);
+    finalMessage(pscore1,pscore2);// Prints score
+    answerSort(rec,answ);// prints sorted answers
 
     return;
   }// END askQuestions
@@ -138,7 +140,8 @@ class musicquiz
   }
 //If the answer is true this method a value 3,6 given the inputs being 1-5 || 6.
   public static int disroll(boolean uans)
-  { int roll = score();
+  {
+   int roll = score();
     int fin = 0;
     if (uans = true)
     {
@@ -158,9 +161,8 @@ class musicquiz
       print("System Broken :P");
       return fin;
     }
-
-
   }
+  
   /*This method is an adder if the value given is 3 or else just returns 6*/
   public static int adderOr(int a,int score)
   {
@@ -195,6 +197,7 @@ class musicquiz
     }
     // Block of code for calculation '+=' means add the term from before to te current one(always use in loop).
     int sum = 0;
+    
     for(int i =0; i<pscore1.length; i++)
     {
       sum += pscore1[i];
@@ -206,14 +209,14 @@ class musicquiz
     print("Your team scored :" + sum);
 
   }
-
+	//Populates the answers but not sort.
   public static void answerSort(QandA rec[], String answ [])
   {
     int [] checkCount= new int[5];
 
     for(int i=0;i < checkCount.length; i++)
     {
-      checkCount[i] = getansCorrect(rec[i]);
+      checkCount[i] = getansCorrect(rec[i]);//getting the number of people who got answers correct.
     }
 
     int [] index = new int [5];
@@ -230,12 +233,12 @@ class musicquiz
     }
 
   }// END answerSort
-
+	//Sorts the checkCount and index.
   public static int [] SortWithIndex(int data [], int index [])
   {
-  	int len = data.length;
-  	int [] temp1 = new int[len];
-  	int [] temp2 = new int[len];
+			int len = data.length;
+			int [] temp1 = new int[len];
+			int [] temp2 = new int[len];
 
 
       for (int i = 0; i <len; i++)
@@ -264,9 +267,8 @@ class musicquiz
       }
 
       return index;
-
   }
-
+	//returns a 1 or 0 based on the answer being true.
   public static int ifCorrect(boolean b)
   {
     int a = 0;
@@ -282,7 +284,7 @@ class musicquiz
   }
   // Create and Getter and Setters
   public static QandA createQA(int i)
-  {
+  {	//Question Bank
     String [] ques = {"Which of the following rock songs won the Best Rock Performance at the 2016 Grammy Awards?",
     "Justin Bieber had three of the top five songs on the Billboard Hot 100 chart for January 2nd, 2016. Sorry, Love Yourself and...?",
   "What did Mike Posner take in Ibiza to show Avicii he was cool?",
@@ -291,6 +293,7 @@ class musicquiz
     String [] ans1 = {"Don't Wanna Fight","What Do You Mean?","Pill","Ariana Grande","Future"};
     String [] ans2 = {"Something From Nothing","I'll Show You","Whiskey","Lady Gaga","Drake"};
     String [] ans3 = {"Moaning Lisa Smile","Purpose","Beer","Adele","The Weeknd"};
+    //Populating the record.
     QandA q = new QandA();
     q = setQues(q,ques[i]);
     q = setAns(q,ans1[i],ans2[i],ans3[i]);
@@ -340,7 +343,9 @@ class musicquiz
   {
     return q.ansCorrect;
   }
-
+	/*
+	This method is used for the user input.
+	*/
   public static String userin()
   {
 
@@ -352,10 +357,10 @@ class musicquiz
 
 
   //Method for output
-  public static void print (String tboutput)
+  public static void print (String tbOutput)
   {
 
-    System.out.println(tboutput);
+    System.out.println(tbOutput);
 
   }
 
