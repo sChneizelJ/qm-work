@@ -90,7 +90,7 @@ class artgallery
         }
         else
         {
-            System.out.println("Then please ask the reception or read the brochure provided"); //:P
+            System.out.println("Then please ask the reception or read the brochure provided"); //	Exceptions
         }
     }// END askvisitor
 

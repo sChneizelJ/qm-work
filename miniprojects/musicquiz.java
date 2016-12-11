@@ -272,7 +272,7 @@ class musicquiz
   public static int ifCorrect(boolean b)
   {
     int a = 0;
-    if (b = true)
+    if (b == true)
     {
       a = 1;
       return a;

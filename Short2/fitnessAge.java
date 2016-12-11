@@ -82,16 +82,16 @@ class fitnessAge
     
     public static int inputAge2() // int as it requires integer inputs.
     {
-       int agea;
+       int age2;
        
        Scanner scanner = new Scanner(System.in);  
        
        System.out.println("Score for fitness test 2?");
        
-       agea = Integer.parseInt(scanner.nextLine());
+       age2 = Integer.parseInt(scanner.nextLine());
  
        
-       return agea;
+       return age2;
     } // END inputAge2
 
     

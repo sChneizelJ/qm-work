@@ -1,5 +1,5 @@
 import java.io.*;
-import java.lang;
+import java.lang.*;
 
 
 class fileIO
@@ -7,7 +7,8 @@ class fileIO
 
   public static void main(String [] args)
   {
-    String [] names;
+    String askIf_read = "yes";
+    String [] names = new String[5];
     if (askIf_read.equals("yes"))
     {
       names = reader();
@@ -17,13 +18,13 @@ class fileIO
       {worker(names);}
       else
       {
-        names = {"nothing"};
+        names = {"nothing","nada","nada","nada","nada"};
         worker(names);
       }
     }
     else
     {
-      names = {"nothing"}
+      names = {"nothing","nada","nada","nada","nada"};
       worker(names);
     }
 
@@ -31,12 +32,12 @@ class fileIO
   }
 
 
-  public static void worker(String [] n)
+  public static void [] worker(String [] n)
   {
 
-    if(n[0].equals("nothing"))
+    if(n[0] != null)
     {
-      String [] w = {"Cow","Pow","Wow"}
+      String [] w = {"Cow","Pow","Wow"};
       writer(w);
       for(int i; i<n.length; i++)
       {System.out.println(w);}
@@ -48,9 +49,10 @@ class fileIO
     }
   }
 
-  public static String [] reader() throws IOException
+  public static String [] reader()
   {
-    BufferedReader inStream = new BufferedReader(new FileReader("mydata2.txt"));
+    try{
+    BufferedReader inStream = new BufferedReader(new FileReader("mydata.txt"));
 
     // Read in first file entry as an integer - the number of names stored
     int NumberofNames = Integer.parseInt(inStream.readLine());
@@ -69,11 +71,13 @@ class fileIO
     inStream.close();
 
     return names;
+    }
   }
 
-  public static void writer(String [] names) throws IOException
+  public static void writer(String [] names)
   {
-
+    try
+    {
     PrintWriter outputStream = new PrintWriter(new FileWriter("mydata.txt"));
 
     // Create an array with some sample names to store
@@ -82,10 +86,11 @@ class fileIO
     // Store the names from the array in the file, one name per line
     for (int i = 0; i < names.length; i++)
     {
-            outputStream.println(names[i]);
+        outputStream.println(names[i]);
     }
 
     outputStream.close();
-
-  }
+    }
+    catch(IOException e)
+    {}
 }
